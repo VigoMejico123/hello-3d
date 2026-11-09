@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ct75amjho7x3a"]
+
+[ext_resource type="Script" uid="uid://f1xcxafi7su5" path="res://player.gd" id="1_lwogq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r4rmp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxfy6"]
+albedo_color = Color(1, 0.43137255, 0.88235295, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r4rmp"]
+
+[node name="MainNode" type="Node3D" unique_id=359479753]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1098446036]
+transform = Transform3D(0.9999619, 0.003893759, -0.0078096753, 0, 0.8949344, 0.4461977, 0.0087265335, -0.4461807, 0.8949003, -0.08578056, 5.5190754, 10.810867)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=827082020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7924345, 3.4802976, 4.1076865)
+
+[node name="Ground" type="CSGBox3D" parent="." unique_id=351799747]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
+
+[node name="Random wall obstcale" type="CSGBox3D" parent="." unique_id=755727820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.761084, 0.61344457, 1.7593384)
+use_collision = true
+size = Vector3(1, 1, 4.5186768)
+
+[node name="SphereObstacle" type="CSGSphere3D" parent="." unique_id=1746538417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7799537, 0.7516179, 2.1034644)
+use_collision = true
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=814778852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("1_lwogq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1882326918]
+mesh = SubResource("CapsuleMesh_r4rmp")
+surface_material_override/0 = SubResource("StandardMaterial3D_bxfy6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1483156613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r4rmp")
